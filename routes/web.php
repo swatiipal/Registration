@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,18 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/', [RegisterController::class,'index']);
-Route::post('/', [RegisterController::class,'store']);
+//For Login
+Route::get('/', [LoginController::class,'index']);
+Route::post('/', [LoginController::class,'store']);
+Route::get('/controller',[TestController::class,'welcome']);
+
+//For Model
+Route::get('/login', function(){
+    $login = Login::all();
+    echo "<pre>";
+    print_r($login->toArray());
+});
+
+//For Register
+Route::get('/register',[RegisterController::class,'index']);
+Route::post('/register',[RegisterController::class,'store']);

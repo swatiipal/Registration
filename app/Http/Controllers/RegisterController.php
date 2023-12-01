@@ -7,20 +7,18 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function index()
-    {
-        return view('welcome');
+    public function index(){
+        return view('registrationForm.register');
     }
-    public function store(Request $request)
-    {
-        echo "<pre>";
+    public function store(Request $request){
         $validated = $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed',
-            'password_confirmation' => 'required'
-            // 'password' => 'required',
-            // 'confirmpassword' => 'required|same:password'
+            'dob' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
+            'city' =>'required',
+            'email' => 'required',
+            'password' => 'required'
         ]);
         dd($request->all());
     }

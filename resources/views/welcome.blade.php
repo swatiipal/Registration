@@ -15,7 +15,7 @@
 
 <body>
     <div class="container">
-        <h4>Registration</h4>
+        <h4>Login</h4>
 
         <form action="{{ url('/') }}/" method="post">
             @csrf
@@ -23,15 +23,15 @@
                 $demo = 1;
             @endphp
             {{-- @php
-        echo "<pre>";
-            print_r($errors->all());
-            echo "</pre>";
-        @endphp --}}
+                echo '<pre>';
+                print_r($errors->all());
+                echo '</pre>';
+            @endphp --}}
 
-            <x-input type="text" name="name" label="Name" :demo="$demo"/>
-            <x-input type="email" name="email" label="Email" :demo="$demo"/>
+            <x-input type="text" name="name" label="Name" :demo="$demo" />
+            <x-input type="email" name="email" label="Email" :demo="$demo" />
             <x-input type="password" name="password" label="Password" />
-            <x-input type="password" name="password_confirmation" label="Confirm Password"/>
+            <x-input type="password" name="password_confirmation" label="Confirm Password" />
             <button class="btn btn-primary">Submit</button>
         </form>
     </div>
