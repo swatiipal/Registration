@@ -32,3 +32,7 @@ Route::get('/login', function(){
 //For Register
 Route::get('/register',[RegisterController::class,'index']);
 Route::post('/register',[RegisterController::class,'store']);
+Route::get('/view',[RegisterController::class,'view']);
+Route::get('register/delete/{id}',[RegisterController::class,'delete'])->name('register.delete');
+Route::get('/register/edit/{id}',[RegisterController::class,'edit'])->name('register.edit');
+Route::get('/register/update/{id}',[RegisterController::class,'update'])->name('register.update');

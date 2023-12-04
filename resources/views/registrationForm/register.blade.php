@@ -33,7 +33,7 @@
             <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-10">
-                    <select class="form-control" name="city">
+                    <select class="form-control" name="city" value="{{ old('city') }}">
                         <option value="">Select City</option>
                         <option value="mumbai">Mumbai</option>
                         <option value="pune">Pune</option>
@@ -50,8 +50,9 @@
             </div>
             <x-input type="email" name="email" label="Email"/>
             <x-input type="password" name="password" label="Password"/>
-            
+            <x-input type="password" name="password_confirmation" label="Confirm Password" />
             <button class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" href="{{ url('/') }}">Login</a>
         </form>
     </div>
 

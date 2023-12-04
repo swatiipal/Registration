@@ -31,8 +31,10 @@
             <x-input type="text" name="name" label="Name" :demo="$demo" />
             <x-input type="email" name="email" label="Email" :demo="$demo" />
             <x-input type="password" name="password" label="Password" />
-            <x-input type="password" name="password_confirmation" label="Confirm Password" />
+            
             <button class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" href="{{ url('/') }}/register">Sign In</a>
+            <a class="btn btn-primary" href="{{ url('/view') }}">View Users</a>
         </form>
     </div>
     <!-- Optional JavaScript -->

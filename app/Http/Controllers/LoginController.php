@@ -18,7 +18,6 @@ class LoginController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
-            'password_confirmation' => 'required'
             // 'password' => 'required',
             // 'confirmpassword' => 'required|same:password'
         ]);
