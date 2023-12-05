@@ -10,10 +10,10 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        $title = "Register User";
+        $title = "Register New User";
         $url = url('/register');
         $data = compact('title', 'url');
-        return view('registrationForm.register');
+        return view('registrationForm.register')->with($data);
     }
     public function store(Request $request)
     {
@@ -76,10 +76,24 @@ class RegisterController extends Controller
 
         if (!is_null($register)) {
             $url = url('/register/update'). "/" .$id;
-            $title = "Update User";
+            $title = "Edit User Data";
             $data = compact('register','title', 'url');
             return view('registrationForm.register')->with($data);
         } else {
+            return redirect('view');
+        }
+    }
+    public function update($id,Request $request){
+        $registers = Register::find($id);
+        $registers->name = $request['name'];
+        $registers->dob = $request['dob'];
+        $registers->gender = $request['gender'];
+        $registers->address = $request['address'];
+        $registers->city = $request['city'];
+        $registers->email = $request['email'];
+        $registers->password = $request['password'];
+        $registers->save();
+        if($registers->save()){
             return redirect('view');
         }
     }
