@@ -8,7 +8,7 @@ use App\Models\Register;
 
 class RegisterController extends Controller
 {
-    public function index()
+    public function index() //create
     {
         $title = "Register New User";
         $url = url('/register');
@@ -17,6 +17,8 @@ class RegisterController extends Controller
     }
     public function store(Request $request)
     {
+        // p($request->all());
+        // die();
         $validated = $request->validate([
             'name' => 'required',
             'dob' => 'required',
@@ -67,6 +69,25 @@ class RegisterController extends Controller
         // echo "<pre>";
         // print_r($registers);
     }
+    public function forceDelete($id)
+    {
+        $user = Register::withTrashed()->find($id);
+        if (!is_null($user)) {
+            $user->forceDelete();
+        }
+        return redirect('utility');
+        
+    }
+    public function restore($id)
+    {
+        $user = Register::withTrashed()->find($id);
+        // die();
+        if (!is_null($user)) {
+            $user->restore();
+        }
+        return redirect('view');
+        
+    }
 
     public function edit($id)
     {
@@ -97,4 +118,11 @@ class RegisterController extends Controller
             return redirect('view');
         }
     }
+
+    public function trash(){
+        $registers = Register::onlyTrashed()->get();
+        $data = compact('registers');
+        return view('utility')->with($data);
+    }
+
 }

@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('dob')->after('name');
-            $table->string('address',100)->after('name');
-            $table->string('city',100)->after('name');
+            $table->softDeletes();
         });
     }
 
@@ -24,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropSoftDeletes();
         });
     }
 };

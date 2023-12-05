@@ -34,5 +34,8 @@ Route::get('/register',[RegisterController::class,'index']);
 Route::post('/register',[RegisterController::class,'store']);
 Route::get('/view',[RegisterController::class,'view']);
 Route::get('register/delete/{id}',[RegisterController::class,'delete'])->name('register.delete');
+Route::get('register/force-delete/{id}',[RegisterController::class,'forceDelete'])->name('register.force-delete');
+Route::get('register/restore/{id}',[RegisterController::class,'restore'])->name('register.restore');
 Route::get('/register/edit/{id}',[RegisterController::class,'edit'])->name('register.edit');
 Route::post('/register/update/{id}',[RegisterController::class,'update']);
+Route::get('/view/trash',[RegisterController::class,'trash'])->name('register.trash');

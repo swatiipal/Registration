@@ -21,10 +21,9 @@
 <body>
     <div class="container">
     <h3>
-        <center>View, Users!</center>
+        <center>Trash Data!</center>
     </h3>
-    <a href="{{url('/register')}}" class="btn btn-primary">Add</a>
-    <a href="{{route('register.trash')}}" class="btn btn-danger">Utility</a><br><br>
+    <a href="{{url('/view')}}" class="btn btn-primary">Console</a><br><br>
     <table id="myTable" class="display">
         {{-- <pre>
         {{print_r($registers->toArray())}}
@@ -56,12 +55,8 @@
                     <td>{{ $register->address }}</td>
                     <td>{{ $register->city }}</td>
                     <td>{{ $register->email }}</td>
-                    <td><a class="btn btn-warning" href="{{route('register.edit',$register->id)}}">Edit</a>
-                        {{-- <a class="btn btn-danger" href="{{url('register/delete/')}}/{{$register->id}}">Delete</a> --}}
-                        {{-- <a class="btn btn-danger" href="{{route('register.delete',$register->id)}}">Delete</a> --}}
-                        
-                        <a class="btn btn-danger" href="{{route('register.delete',[$id=$register->id])}}">Trash</a>
-                        
+                    <td><a class="btn btn-warning" href="{{route('register.force-delete',$register->id)}}">Delete</a>
+                        <a class="btn btn-danger" href="{{route('register.restore',[$id=$register->id])}}">Restore</a>
                     </td>
                 </tr>
             @endforeach
