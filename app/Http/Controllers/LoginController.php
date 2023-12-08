@@ -17,7 +17,7 @@ class LoginController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed',
+            'password' => 'required',
             // 'password' => 'required',
             // 'confirmpassword' => 'required|same:password'
         ]);
@@ -27,6 +27,10 @@ class LoginController extends Controller
         $login->name = $request['name'];
         $login->email = $request['email'];
         $login->password = $request['password'];
+        //session
+        $request->session()->put('name',$request['name']);
+        // dd(session('name'));
+        
         // $login->password = md5($request['password']);
         $login->save();
         if ($login->save()) {
