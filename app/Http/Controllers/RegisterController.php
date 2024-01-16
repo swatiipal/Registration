@@ -8,10 +8,12 @@ use App\Models\Register;
 
 class RegisterController extends Controller
 {
+    
     public function index() //create
     {
         $title = "Register New User";
         $url = url('/register');
+        $city = 
         $data = compact('title', 'url');
         return view('registrationForm.register')->with($data);
     }

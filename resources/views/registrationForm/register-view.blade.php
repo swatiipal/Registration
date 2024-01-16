@@ -20,54 +20,55 @@
 
 <body>
     <div class="container">
-    <h3>
-        <center>View, Users!</center>
-    </h3>
-    <a href="{{url('/register')}}" class="btn btn-primary">Add</a>
-    <a href="{{route('register.trash')}}" class="btn btn-danger">Utility</a><br><br>
-    <table id="myTable" class="display">
-        {{-- <pre>
+        <h3>
+            <center>View, Users!</center>
+        </h3>
+        <a href="{{ url('/register') }}" class="btn btn-primary">Add</a>
+        <a href="{{ route('register.trash') }}" class="btn btn-danger">Utility</a><br><br>
+        <table id="myTable" class="display">
+            {{-- <pre>
         {{print_r($registers->toArray())}}
     </pre> --}}
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>DOB</th>
-                <th>Gender</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Email</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($registers as $register)
+            <thead>
                 <tr>
-                    <td>{{ $register->name }}</td>
-                    {{-- <td>{{ get_formatted_date($register->dob,'d-m-Y') }}</td> --}}
-                    <td>{{ $register->dob }}</td>
-                    <td>
-                        @if ($register->gender == 'M')
-                            Male
-                        @else
-                            Female
-                        @endif
-                    </td>
-                    <td>{{ $register->address }}</td>
-                    <td>{{ $register->city }}</td>
-                    <td>{{ $register->email }}</td>
-                    <td><a class="btn btn-warning" href="{{route('register.edit',$register->id)}}">Edit</a>
-                        {{-- <a class="btn btn-danger" href="{{url('register/delete/')}}/{{$register->id}}">Delete</a> --}}
-                        {{-- <a class="btn btn-danger" href="{{route('register.delete',$register->id)}}">Delete</a> --}}
-                        
-                        <a class="btn btn-danger" href="{{route('register.delete',[$id=$register->id])}}">Trash</a>
-                        
-                    </td>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Email</th>
+                    <th>Action</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                @foreach ($registers as $register)
+                    <tr>
+                        <td>{{ $register->name }}</td>
+                        {{-- <td>{{ get_formatted_date($register->dob,'d-m-Y') }}</td> --}}
+                        <td>{{ $register->dob }}</td>
+                        <td>
+                            @if ($register->gender == 'M')
+                                Male
+                            @else
+                                Female
+                            @endif
+                        </td>
+                        <td>{{ $register->address }}</td>
+                        <td>{{ $register->city }}</td>
+                        <td>{{ $register->email }}</td>
+                        <td><a class="btn btn-warning" href="{{ route('register.edit', $register->id) }}">Edit</a>
+                            {{-- <a class="btn btn-danger" href="{{url('register/delete/')}}/{{$register->id}}">Delete</a> --}}
+                            {{-- <a class="btn btn-danger" href="{{route('register.delete',$register->id)}}">Delete</a> --}}
+
+                            <a class="btn btn-danger"
+                                href="{{ route('register.delete', [($id = $register->id)]) }}">Trash</a>
+
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
@@ -83,7 +84,7 @@
             $('#myTable').DataTable();
         });
     </script>
-    
+
 </body>
 
 </html>
